@@ -59,12 +59,16 @@ public class SauceNAOSearcher {
 
                     JSONArray results = JSONObject.parseObject(sb.toString()).getJSONArray("results");
                     JSONObject data = new JSONObject();
+                    JSONObject header = new JSONObject();
                     if(results.size()>0){
-                        data = results.getJSONObject(0).getJSONObject("data");
+                        JSONObject first = results.getJSONObject(0);
+                        data = first.getJSONObject("data");
+                        header = first.getJSONObject("header");
                     }
 
-
                     messages.append("结果为：");
+                    messages.append(System.getProperty("line.separator"));
+                    messages.append("相似度"+"------->"+header.get("similarity")+"%");
                     data.forEach((key,value) ->{
                         messages.append(System.getProperty("line.separator"));
                         if(key.equals("ext_urls")){

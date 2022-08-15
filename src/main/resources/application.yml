@@ -1,0 +1,6 @@
+server:
+  port: 8099
+
+bot:
+  qq: 123456789
+  passwd: "123456789"

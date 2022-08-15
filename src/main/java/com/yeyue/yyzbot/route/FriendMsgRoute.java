@@ -1,0 +1,70 @@
+package com.yeyue.yyzbot.route;
+
+import com.yeyue.yyzbot.constants.CommandsEnum;
+import com.yeyue.yyzbot.constants.TypeEnum;
+import com.yeyue.yyzbot.event.Everyday60s;
+import com.yeyue.yyzbot.event.Help;
+import com.yeyue.yyzbot.event.SauceNAOSearcher;
+import com.yeyue.yyzbot.event.Setutime;
+import com.yeyue.yyzbot.event.WhatAnime;
+import net.mamoe.mirai.event.events.FriendMessageEvent;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class FriendMsgRoute {
+    @Autowired
+    Help help;
+    @Autowired
+    Everyday60s everyday60s;
+    @Autowired
+    Setutime setutime;
+    @Autowired
+    WhatAnime whatAnime;
+    @Autowired
+    SauceNAOSearcher sauceNAOSearcher;
+
+    public void route(FriendMessageEvent event){
+        String[] str = event.getMessage().serializeToMiraiCode().split("\\s+");
+        //命令列表
+        if(str[0].equals(CommandsEnum.HELP.getOrder())){
+            help.sendHelpList(event);
+        }
+
+        //每天60秒读懂世界
+        if(str[0].equals(CommandsEnum.EVERYDAY60S.getOrder())){
+            everyday60s.getEveryday60s(event);
+        }
+
+        //色图
+        if(str[0].equals(CommandsEnum.SETUTIME.getOrder())){
+            if(str.length>2){
+                if(str[2].equals("正常模式")){
+                    setutime.changeMode(0,2,event);
+                    return;
+                }
+                if(str[2].equals("lsp模式")){
+                    setutime.changeMode(1,2,event);
+                    return;
+                }
+                if(str[2].equals("混合模式")){
+                    setutime.changeMode(2,2,event);
+                    return;
+                }
+            }
+            setutime.sendFriendSetu(event);
+            return;
+        }
+
+        //搜图
+        if(str[0].equals(CommandsEnum.WHATANIME.getOrder())){
+            whatAnime.searchAnime(event, TypeEnum.FRIEND.getValue());
+        }
+        //搜图
+        if(str[0].equals(CommandsEnum.SAUCENAO.getOrder())){
+            sauceNAOSearcher.searchImage(event, TypeEnum.FRIEND.getValue());
+        }
+
+
+    }
+}

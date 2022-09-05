@@ -5,7 +5,9 @@ public enum CommandsEnum {
     EVERYDAY60S("60s","每天60秒读懂世界","@bot 60s"),
     SETUTIME("setutime","你懂的","@bot setutime [标签]/[模式]"),
     WHATANIME("whatAnime","搜番","@bot whatAnime [图片]"),
-    SAUCENAO("saucenao","搜图","@bot saucenao [图片]");
+    SAUCENAO("saucenao","搜图","@bot saucenao [图片]"),
+    ERNIEVILGHELP("ernieVilgHelp","AI作画风格参数","@bot ernieVilgHelp"),
+    ERNIEVILG("ernieVilg","AI作画","@bot ernieVilg [风格] [内容]");
 
     private String order;
     private String comment;

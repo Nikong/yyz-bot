@@ -3,6 +3,7 @@ package com.yeyue.yyzbot.route;
 import com.yeyue.yyzbot.constants.CommandsEnum;
 import com.yeyue.yyzbot.constants.TypeEnum;
 import com.yeyue.yyzbot.event.Chat;
+import com.yeyue.yyzbot.event.ErnieVilg;
 import com.yeyue.yyzbot.event.Everyday60s;
 import com.yeyue.yyzbot.event.Help;
 import com.yeyue.yyzbot.event.SauceNAOSearcher;
@@ -27,6 +28,8 @@ public class GroupMsgRoute {
     WhatAnime whatAnime;
     @Autowired
     SauceNAOSearcher sauceNAOSearcher;
+    @Autowired
+    ErnieVilg ernieVilg;
 
     public void route(GroupMessageEvent event){
         String[] str = event.getMessage().serializeToMiraiCode().split("\\s+");
@@ -72,6 +75,18 @@ public class GroupMsgRoute {
             //搜图
             if(str[1].equals(CommandsEnum.SAUCENAO.getOrder())){
                 sauceNAOSearcher.searchImage(event ,TypeEnum.GROUP.getValue());
+                return;
+            }
+
+            //AI作画
+            if(str[1].equals(CommandsEnum.ERNIEVILGHELP.getOrder())){
+                help.sendErnieVilgHelpList(event);
+                return;
+            }
+
+            //AI作画
+            if(str[1].equals(CommandsEnum.ERNIEVILG.getOrder())){
+                ernieVilg.getDraw(event ,TypeEnum.GROUP.getValue());
                 return;
             }
 

@@ -2,7 +2,7 @@ package com.yeyue.yyzbot.constants;
 
 public enum ErnieVilgEnum {
     HELP("1","油画"),
-    EVERYDAY60S("2","水彩画"),
+    EVERYDAY60S("2","水彩"),
     SETUTIME("3","卡通"),
     WHATANIME("4","粉笔画"),
     SAUCENAO("5","儿童画"),

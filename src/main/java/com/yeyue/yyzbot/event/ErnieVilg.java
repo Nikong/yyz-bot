@@ -78,7 +78,7 @@ public class ErnieVilg {
                 }
 
                 try {
-                    Thread.sleep(5000l);
+                    Thread.sleep(10000l);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

@@ -10,8 +10,11 @@
 √ 搜番(whatAnime)  
 √ 搜图(sauceNAO)  
 √ ChatGPT3.5  
-√ ba简单功能(arona提供,杂图为功能表)
-√ 瑟图(api.lolicon.app提供的图库)
+√ ba简单功能(arona提供,杂图为功能表)  
+√ 瑟图(api.lolicon.app提供的图库)  
+
+待整合:  
+× 推特推送(API需要巨资，搁置)
 
 
 项目结构:  

@@ -1,0 +1,21 @@
+server:
+  port: 8099
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: 数据库链接
+    username: 数据库用户名
+    password: 数据库密码
+    hikari:
+      max-lifetime: 5000
+
+bot:
+  qq: qq号
+  passwd: "密码"
+
+userAccount:
+  chatGpt:
+    token: chatGPT的token
+  sauceNAO:
+    apiKey: sauceNAO的apiKey

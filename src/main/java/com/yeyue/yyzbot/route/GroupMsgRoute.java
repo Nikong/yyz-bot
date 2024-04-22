@@ -84,13 +84,6 @@ public class GroupMsgRoute {
                 return;
             }
 
-            if (str[1].equals("阿龙是什么")) {
-                ForwardMessageBuilder helpMesBuilder = new ForwardMessageBuilder(event.getSubject());
-                helpMesBuilder.add(1043097469L, "うてな", new PlainText("我是傻逼"));
-                event.getSubject().sendMessage(new MessageChainBuilder().append(helpMesBuilder.build()).build());
-                return;
-            }
-
             //ba
             if (str[1].equals("ba")) {
                 blueArchive.ask(event, TypeEnum.GROUP.getValue());
